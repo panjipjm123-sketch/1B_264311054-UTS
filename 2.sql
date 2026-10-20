@@ -1,24 +1,36 @@
+INSERT INTO kategori (name) VALUES
+('Ekonomi'),
+('Pemerintahan'),
+('Layanan Publik');
 
-INSERT INTO kendaraan (plat_nomor, jenis_kendaraan, kapasitas, tarif_per_km, tipe_energi) VALUES
-('N 1234 AB', 'Bus Listrik', 35, 5000.00, 'Listrik'),
-('N 5678 CD', 'Angkot Tipe-A', 12, 3000.00, 'Hibrida'),
-('N 9012 EF', 'Sepeda Motor Listrik', 2, 2000.00, 'Listrik');
+INSERT INTO users (name, email, role) VALUES
+('Fatir', 'patirstuvw@gmail.com', 'penulis'),
+('Jadid', 'justdid@gmail.com', 'penulis'),
+('Heksa', 'hexaa@gmail.com', 'penulis');
 
-INSERT INTO pengguna (nama_lengkap, email, no_telepon, status_akun, peran) VALUES 
-('Budi Santoso', 'budi@gmail.com', '081234567890', 'Aktif', 'penumpang'),
-('Siti Aminah', 'siti@gmail.com', '089876543210', 'Aktif', 'penumpang'),
-('Ahmad Dani', 'ahmad@gmail.com', '085678901234', 'Aktif', 'penumpang');
 
-INSERT INTO perjalanan (id_pengguna, id_kendaraan, stasiun_asal, stasiun_tujuan, jarak_km, biaya) VALUES 
-(1, 1, 'Stasiun A', 'Stasiun B', 12.50, 62500.00),
-(2, 2, 'Stasiun C', 'Stasiun D', 8.00, 24000.00),
-(1, 3, 'Stasiun E', 'Stasiun F', 4.50, 9000.00);
+INSERT INTO artikel (category_id, title, published_at, status) VALUES
+(1, 'Harga Cabai Naik Jelang Akhir Pekan', '2026-10-01 00:00:00', 'published'),
+(2, 'Pemkot Resmikan Taman Kota Baru', '2026-10-02 00:00:00', 'published'),
+(3, 'Jadwal Pemadaman Listrik Pekan Ini', '2026-10-03 00:00:00', 'draft'),
+(1, 'UMKM Madiun Ikuti Pameran Daerah', '2026-10-04 00:00:00', 'published');
 
-SELECT * FROM pengguna;
+INSERT INTO artikel_penulis (article_id, user_id, peran_penulis) VALUES
+(1, 1, 'Reporter'),
+(1, 2, 'Editor'),
+(2, 2, 'Reporter'),
+(3, 1, 'Reporter'),
+(3, 3, 'Editor'),
+(4, 3, 'Reporter');
 
-UPDATE perjalanan 
-SET biaya = 70000.00 
-WHERE id_perjalanan = 1;
 
-DELETE FROM perjalanan 
-WHERE id_perjalanan = 3;
+SELECT * FROM kategori;
+
+
+UPDATE artikel 
+SET status = 'published' 
+WHERE article_id = 3;
+
+
+DELETE FROM artikel_penulis 
+WHERE article_id = 4 AND user_id = 3;
